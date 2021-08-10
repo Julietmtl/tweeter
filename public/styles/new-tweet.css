@@ -7,7 +7,7 @@ form {
 .new-tweet {
   display: flex;
   justify-content: center;
-  flex-direction: column
+  flex-direction: column;
 }
 
 
@@ -24,9 +24,10 @@ textarea {
     outline: none;
     background-color: #f4f1ec;
     height: 50px;
-    width: 500px;
+    width: 90vw;
     text-align: left;
     font-size: smaller;
+    resize: none;
 } 
 
 .button-and-counter {
