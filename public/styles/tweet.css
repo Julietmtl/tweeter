@@ -10,6 +10,10 @@ article {
   height: auto;
 }
 
+article:hover {
+  box-shadow:10px 10px 0px 0px rgb(202, 213, 230);
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -28,11 +32,9 @@ i.fas.fa-user-ninja {
   display: flex;
   font-weight: bold;
   align-self: center;
-  width: 85vw;
   border-bottom: 4px solid #545149;
   width: 87vw;
-  padding-bottom: 25px;
-  padding-left: 10px;
+  padding: 0px 15px 25px 15px;
   margin-bottom: 15px;
   }
 
@@ -59,6 +61,9 @@ footer {
   color: #4056A1;
 }
 
+.tweet-icons i {
+ padding: 5px;
+}
 
 
 .tweet-icons i:hover {
