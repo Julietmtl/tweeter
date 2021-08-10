@@ -16,6 +16,10 @@
   font-family: 'Bungee', sans-serif;
 }
 
+label {
+  font-weight: bold;
+}
+
 .double-angle-newtweet {
   display: flex;
   flex-direction: column;

@@ -40,6 +40,10 @@ textarea {
   font-family: "bungee", sans-serif;
 }
 
+.counter-negative {
+  color: red;
+}
+
 button {
   background: #4056A1;
   font-family: "bungee", sans-serif;

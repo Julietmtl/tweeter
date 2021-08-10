@@ -5,7 +5,9 @@ $(document).ready(function() {
    let counter = $(this).parent().next(['button-and-counter']).find('.counter');
    counter.text(140 - currentLength);
    if (counter.text() < 0) {
-    counter.css("color", "red")
+    counter.addClass('counter-negative');
+   } else {
+     counter.removeClass('counter-negative');
    }
  })
 });
