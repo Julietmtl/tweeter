@@ -13,11 +13,12 @@ $(document).ready(function () {
       // calls createTweetElement for each tweet
       const $tweet = createTweetElement(tweet);
       // takes return value and appends it to the tweets container
-      $('#tweets-container').append($tweet)
+      $('#tweets-container').prepend($tweet)
     }
   }
 
   const createTweetElement = function (data) {
+    const encoded = `<p class="tweet-post">${escape(data.content.text)}</p>`
     const time = timeago.format(data.created_at)
     const $tweet =
       `<header>
@@ -25,7 +26,7 @@ $(document).ready(function () {
         <span class="name">${data.user.name} </span>
         <span class="username">${data.user.handle}</span>
         </header>
-            <p class="tweet-post">${data.content.text}</p>
+            ${encoded}
             <footer>
               <span class="days-ago"> ${time} </span>
               <div class="tweet-icons">
@@ -56,13 +57,16 @@ $(document).ready(function () {
         url: '/tweets/',
         method: 'POST',
         data: $('#tweet-text').serialize()
-      }).then(function (response) {
-        console.log(response);
+      }).then(function () {
         $('#tweet-text').val('');
-        loadTweets(response);
+        loadTweets();
       })
     }
   })
+
+  const escape = function (str) {
+    return document.createTextNode(str)
+  };
 
   //loads the tweets
   const loadTweets = function () {
