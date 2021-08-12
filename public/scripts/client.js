@@ -3,6 +3,8 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
+
 const data = [
   {
     "user": {
@@ -76,13 +78,28 @@ $(document).ready(function () {
 
   renderTweets(data);
 
-  // console.log($tweet);
-  // $('#tweets-container').append($tweet);
+  $('#Tweet-form').on('submit', (evt) => {
+    evt.preventDefault();
+    $.ajax({
+      url: '/tweets/',
+      method: 'POST',
+      data: $('#tweet-text').serialize()
+    })
+    console.log($('#tweet-text').serialize())
+  })
 
-
-
+  //loads the tweets
+  const loadTweets = function () {
+    $.ajax({
+      method: 'GET',
+      url: '/tweets/',
+      dataType: 'JSON'
+    }) //callback function to get the response back and iterate through the objects
+      .then(function (response) {
+        renderTweets(response)
+      })
+  }
+  loadTweets();
 });
-
-
 
 
