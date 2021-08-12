@@ -56,8 +56,11 @@ $(document).ready(function () {
         url: '/tweets/',
         method: 'POST',
         data: $('#tweet-text').serialize()
+      }).then(function (response) {
+        console.log(response);
+        $('#tweet-text').val('');
+        loadTweets(response);
       })
-      console.log($('#tweet-text').serialize())
     }
   })
 
