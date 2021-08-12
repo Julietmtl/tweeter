@@ -19,8 +19,10 @@ header {
   justify-content: space-between;
 }
 
-i.fas.fa-user-ninja {
-  font-size: 2em;
+.name {
+  justify-content: center;
+  flex-grow: 8;
+  padding-left: 5px;
 }
 
 .username {
