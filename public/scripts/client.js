@@ -5,6 +5,9 @@
  */
 
 $(document).ready(function () {
+  //hide error messages
+  $('#err1').hide();
+  $('#err2').hide();
 
   const renderTweets = function (tweets) {
     // loops through tweets
@@ -44,22 +47,25 @@ $(document).ready(function () {
   // The form should not submit
 
   $('#Tweet-form').on('submit', (evt) => {
+    //Errors are hidden when client tries to submit another tweet
+    $('#err1').slideUp(500);
+    $('#err2').slideUp(500);
     let tweetLength = $('#tweet-text').val().length
     if (tweetLength === 0) {
       evt.preventDefault()
-      alert("Please create a tweet.")
+      $('#err1').slideDown(500);
     } else if ($('#tweet-text').val().length > 140) {
-      evt.preventDefault()
-      alert("Please keep within 140 characters.");
+      evt.preventDefault();
+      $('#err2').slideDown(500);
     } else {
       evt.preventDefault();
       $.ajax({
         url: '/tweets/',
         method: 'POST',
         data: $('#tweet-text').serialize()
-      }).then(function (response) {
+      }).then(function () {
         $('#tweet-text').val('');
-        loadTweets(response);
+        loadTweets();
       })
     }
   })
@@ -78,6 +84,7 @@ $(document).ready(function () {
       dataType: 'JSON'
     }) //callback function to get the response back and iterate through the objects
       .then(function (response) {
+        $('#tweets-container').empty()
         renderTweets(response)
       })
   }

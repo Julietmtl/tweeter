@@ -16,6 +16,28 @@ form {
   flex-direction: column;
 }
 
+#err1 {
+  background: #c51244;
+  padding: 10px;
+  border-radius: 0;
+  position: relative; 
+  display: inline-block;
+  box-shadow: 1px 1px 1px #aaaaaa;
+  margin-top: 10px;
+  color: white
+}
+
+#err2 {
+  background: #c51244;
+  padding: 10px;
+  border-radius: 0;
+  position: relative; 
+  display: inline-block;
+  box-shadow: 1px 1px 1px #aaaaaa;
+  margin-top: 10px;
+  color: white
+}
+
 textarea {
     border-bottom: 4px solid #545149;
     border-top: none;

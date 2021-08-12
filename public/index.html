@@ -65,6 +65,8 @@
       <!-- Compose Tweet -->
       <form id="Tweet-form" action="/tweets/" method="POST" Content-Type: "application/x-www-form-urlencoded">
         <div class="tweet-text-box">
+          <span id="err1">Oh no! Your tweet is empty. Let's try again.</span>
+          <span id="err2">Please stay within the 140 character limit.</span>
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
         </div>
