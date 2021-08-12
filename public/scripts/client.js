@@ -57,15 +57,17 @@ $(document).ready(function () {
         url: '/tweets/',
         method: 'POST',
         data: $('#tweet-text').serialize()
-      }).then(function () {
+      }).then(function (response) {
         $('#tweet-text').val('');
-        loadTweets();
+        loadTweets(response);
       })
     }
   })
 
   const escape = function (str) {
-    return document.createTextNode(str)
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
   };
 
   //loads the tweets
