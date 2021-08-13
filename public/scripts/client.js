@@ -74,6 +74,7 @@ $(document).ready(function () {
         data: $('#tweet-text').serialize()
       }).then(function () {
         $('#tweet-text').val('');
+        $('.counter').text(140)
         loadTweets();
       })
     }
@@ -87,7 +88,7 @@ $(document).ready(function () {
       dataType: 'JSON'
     }) //callback function to get the response back and iterate through the objects
       .then(function (response) {
-        //we need to empty the other tweets and reload it including the new tweets
+        //empty the other tweets and reload it including the new tweets
         $('#tweets-container').empty()
         renderTweets(response)
       })
