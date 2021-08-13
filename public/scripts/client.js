@@ -11,17 +11,24 @@ $(document).ready(function () {
 
   const renderTweets = function (tweets) {
     // loops through tweets
-
     for (let tweet of tweets) {
       // calls createTweetElement for each tweet
       const $tweet = createTweetElement(tweet);
-      // takes return value and appends it to the tweets container
+      // takes return value and prepends it to the tweets container, which shows the most recent tweets
       $('#tweets-container').prepend($tweet)
     }
   }
 
+  //create function to ensure no XSS from users putting html text in the tweet form
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   const createTweetElement = function (data) {
-    const encoded = `<p class="tweet-post">${escape(data.content.text)}</p>`
+    //create safeWords to ensure no XSS
+    const safeWords = `<p class="tweet-post">${escape(data.content.text)}</p>`
     const time = timeago.format(data.created_at)
     const $tweet =
       `<header>
@@ -29,7 +36,7 @@ $(document).ready(function () {
         <span class="name">${data.user.name} </span>
         <span class="username">${data.user.handle}</span>
         </header>
-            ${encoded}
+            ${safeWords}
             <footer>
               <span class="days-ago"> ${time} </span>
               <div class="tweet-icons">
@@ -50,13 +57,15 @@ $(document).ready(function () {
     //Errors are hidden when client tries to submit another tweet
     $('#err1').slideUp(500);
     $('#err2').slideUp(500);
+    //show the two error messages, if empty or over 140 character limit
     let tweetLength = $('#tweet-text').val().length
     if (tweetLength === 0) {
       evt.preventDefault()
       $('#err1').slideDown(500);
-    } else if ($('#tweet-text').val().length > 140) {
+    } else if (tweetLength > 140) {
       evt.preventDefault();
       $('#err2').slideDown(500);
+      //if no errors, we will send the tweets to the server
     } else {
       evt.preventDefault();
       $.ajax({
@@ -70,13 +79,7 @@ $(document).ready(function () {
     }
   })
 
-  const escape = function (str) {
-    let div = document.createElement("div");
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  };
-
-  //loads the tweets
+  //loads the tweets and retrieves the data
   const loadTweets = function () {
     $.ajax({
       method: 'GET',
@@ -84,6 +87,7 @@ $(document).ready(function () {
       dataType: 'JSON'
     }) //callback function to get the response back and iterate through the objects
       .then(function (response) {
+        //we need to empty the other tweets and reload it including the new tweets
         $('#tweets-container').empty()
         renderTweets(response)
       })

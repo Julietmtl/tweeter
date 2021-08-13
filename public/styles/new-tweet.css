@@ -1,7 +1,7 @@
 .container {
  display: flex;
- justify-content: center;
  flex-direction: column; 
+ justify-content: center;
 }
 
 label {
@@ -11,8 +11,8 @@ label {
 
 .new-tweet {
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
 }
 
 
@@ -23,39 +23,40 @@ label {
 
 #err1 {
   background: #c51244;
-  padding: 10px;
   border-radius: 0;
-  position: relative; 
-  display: inline-block;
   box-shadow: 1px 1px 1px #aaaaaa;
+  color: white;
+  display: inline-block;
   margin-top: 10px;
-  color: white
+  padding: 10px;
+  position: relative; 
 }
 
 #err2 {
   background: #c51244;
-  padding: 10px;
   border-radius: 0;
-  position: relative; 
-  display: inline-block;
   box-shadow: 1px 1px 1px #aaaaaa;
+  color: white;
+  display: inline-block;
   margin-top: 10px;
-  color: white
+  padding: 10px;
+  position: relative; 
 }
 
 textarea {
+    align-self: center;
+    background-color: #f4f1ec;
     border-bottom: 4px solid #545149;
     border-top: none;
     border-right: none;
     border-left: none;
-    outline: none;
-    background-color: #f4f1ec;
-    height: 50px;
-    width: 95%;
-    text-align: left;
+    border: none none;
     font-size: smaller;
+    height: 50px;
+    outline: none;
     resize: none;
-    align-self: center;
+    text-align: left;
+    width: 95%;
 } 
 
 .button-and-counter {
@@ -75,6 +76,6 @@ textarea {
 
 button {
   background: #4056A1;
-  font-family: "bungee", sans-serif;
   color: white;
+  font-family: "bungee", sans-serif;
 }
