@@ -1,7 +1,12 @@
-form {
+.container {
  display: flex;
  justify-content: center;
  flex-direction: column; 
+}
+
+label {
+  padding-top: 10px;
+  padding-left: 20px;
 }
 
 .new-tweet {
@@ -46,16 +51,18 @@ textarea {
     outline: none;
     background-color: #f4f1ec;
     height: 50px;
-    width: 90vw;
+    width: 95%;
     text-align: left;
     font-size: smaller;
     resize: none;
+    align-self: center;
 } 
 
 .button-and-counter {
   display: flex;
   justify-content: space-between;
-  padding-top: 10px;
+  padding: 10px 20px 10px 20px
+
 }
 
 .counter {

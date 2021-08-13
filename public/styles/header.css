@@ -1,5 +1,4 @@
 .header {
-  margin-top: 120px;
   display: flex;
   width: 100vw;
   height: 400px;
@@ -10,3 +9,13 @@
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
 }
 
+img {
+  min-width: 20%;
+  padding-top: 50px;
+}
+
+.profile {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
